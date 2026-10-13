@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1a365d">
+<meta name="description" content="Penerokaan institusi maklumat dan sumber pengajaran Sejarah dari peringkat kebangsaan hingga komuniti.">
+<title>Institusi Maklumat Sumber PdP Sejarah</title>
+
+<!-- Google Font 'Poppins' -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy: #1a365d;
+    --blue: #2b6cb0;
+    --gold: #d69e2e;
+    --light-bg: #f8fafc;
+    --ink: #2d3748;
+    --line: #e2e8f0;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 150px; }
+a { color: #1b5fa7; text-underline-offset: 3px; }
+button:focus-visible, a:focus-visible { outline: 3px solid #f6c453; outline-offset: 3px; }
+.skip-link { position:absolute; left:12px; top:-60px; z-index:1000; padding:10px 14px; background:white; color:#1a365d; border-radius:8px; }
+.skip-link:focus { top:12px; }
+
+body { 
+    margin: 0; 
+    background: var(--light-bg); 
+    color: var(--ink); 
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(110deg, #1a365d, #2a4365);
+    color: #fff;
+    padding: 20px clamp(16px, 4vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+.brand { font-weight: 800; font-size: 1.3rem; letter-spacing: 0.5px; }
+.brand small { display: block; font-weight: 400; color: #cbd5e0; font-size: 0.85rem; margin-top: 4px; }
+nav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.nav-toggle { display:none; border:1px solid rgba(255,255,255,.4); border-radius:8px; padding:8px 12px; background:rgba(255,255,255,.1); color:white; font:inherit; font-weight:700; cursor:pointer; }
+nav button {
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+nav button:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+nav button.active, nav button[aria-current="page"] { background: var(--gold); color: #1a202c; border-color: var(--gold); box-shadow: 0 4px 6px rgba(214, 158, 46, 0.3); }
+nav button { min-height: 42px; }
+nav button:focus-visible { outline-color: #fff; }
+
+main { max-width: 1100px; margin: auto; padding: 40px 20px 60px; min-height:55vh; }
+.view { display: none; }
+.view.active { display: block; animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+h1 { font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; }
+h2 { color: var(--navy); border-bottom: 3px solid var(--gold); padding-bottom: 12px; margin-top: 0; font-weight: 800; font-size: 1.8rem; }
+h3 { color: var(--blue); margin-top: 30px; font-weight: 700; font-size: 1.4rem; }
+h4 { color: var(--navy); margin-bottom: 8px; font-weight: 600; font-size: 1.1rem; }
+
+.card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+    transition: transform 0.2s;
+}
+
+.timeline-item {
+    margin-bottom: 25px;
+    padding-left: 25px;
+    border-left: 4px solid var(--gold);
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+.timeline-item p { margin-top: 8px; color: #4a5568; }
+
+.image-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.image-wrapper {
+    text-align: center;
+    margin-bottom: 15px;
+    background: #f1f5f9; 
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+.image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+.image-wrapper img:hover { transform: scale(1.02); }
+.image-caption-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+/* Grid Layout for Multiple Images */
+.image-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.image-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+@media(max-width: 768px) {
+    .image-grid-2, .image-grid-3 { grid-template-columns: 1fr; }
+}
+
+.collection-list li { margin-bottom: 12px; }
+
+/* Styles for Analytical Section */
+.analisis-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+}
+.analisis-thumb {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+    border: 2px solid var(--line);
+    flex-shrink: 0;
+}
+.analisis-content h4 { margin-top: 0; margin-bottom: 10px; }
+.analisis-content ul { margin: 0; padding-left: 20px; }
+.analisis-content li { margin-bottom: 8px; }
+
+.footer { text-align: center; padding: 30px; background: var(--navy); color: white; margin-top: 40px; font-weight: 300; }
+
+@media(max-width: 800px) {
+    header { flex-direction: column; align-items: flex-start; }
+    nav button { padding: 8px 12px; font-size: 0.85rem; }
+    .analisis-item { flex-direction: column; }
+    .analisis-thumb { margin-bottom: 15px; margin-right: 0; width: 100%; height: 180px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#kandungan">Langkau ke kandungan utama</a>
+
+<header>
+  <div class="brand">
+    🏛️ Institusi Maklumat Sumber Sejarah
+    <small>Tugasan 2: Pemangkin Kualiti Pengajaran Global</small>
+  </div>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">☰ Menu</button>
+  <nav id="site-nav" aria-label="Navigasi utama">
+    <button class="active" data-view="utama" aria-current="page">Utama</button>
+    <button data-view="evolusi">Evolusi</button>
+    <button data-view="pnm">PNM</button>
+    <button data-view="pkl">PKL</button>
+    <button data-view="ppak">PPAK</button>
+    <button data-view="ipg">IPG</button>
+    <!-- Nama bahagian telah ditukar kepada Komuniti -->
+    <button data-view="komuniti">Komuniti</button>
+    <button data-view="analisis">Analisis</button>
+    <button data-view="rujukan">Rujukan</button>
+  </nav>
+</header>
+
+<main id="kandungan" tabindex="-1">
+
+  <!-- HALAMAN 1: UTAMA -->
+  <section id="utama" class="view active">
+    <div class="card" style="text-align: center; padding: 70px 20px; background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);">
+      <h1 style="color: var(--navy); font-size: 2.8rem; margin-bottom: 15px;">Sumber Sejarah Pemangkin<br><span style="color: var(--gold);">Kualiti Pengajaran Global</span></h1>
+      <p style="font-size: 1.25rem; color: #4a5568; max-width: 750px; margin: 0 auto 35px; font-weight: 300;">
+        Pusat Sumber bukan sekadar bilik bacaan di sekolah. Ia merupakan institusi maklumat komprehensif yang membentuk ekosistem Pengajaran dan Pembelajaran (PdP) Sejarah bermula dari akar umbi sehinggalah ke peringkat antarabangsa.
+      </p>
+      <button onclick="go('evolusi')" style="background: var(--navy); color: white; border: none; padding: 14px 32px; border-radius: 30px; font-size: 1.15rem; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3); transition: all 0.3s ease;">Mulakan Penerokaan &rarr;</button>
+    </div>
+  </section>
+
+  <!-- HALAMAN 2: EVOLUSI -->
+  <section id="evolusi" class="view">
+    <div class="card">
+      <h2>Sejarah Perkembangan Pusat Sumber kepada Perpustakaan di Malaysia</h2>
+      <p>Evolusi institusi maklumat di Malaysia melibatkan peralihan yang menarik antara konsep <strong>Pusat Sumber</strong> (hab bahan pelbagai media) dan <strong>Perpustakaan</strong> (pusat pengurusan maklumat komprehensif). Secara sejarahnya, perkembangan ini tidak bergerak dalam satu garis lurus semata-mata, sebaliknya kedua-dua entiti ini saling melengkapi dan berkembang seiring dengan keperluan teknologi dan masyarakat.</p>
+
+      <h3>Kronologi Perkembangan:</h3>
+      
+      <div class="timeline-item">
+        <h4>Sebelum 1950-an: Era Kutubkhanah & Bilik Bacaan</h4>
+        <p>Pusat rujukan awal di Tanah Melayu bermula dengan wujudnya kelab bacaan persendirian dan <em>Kutubkhanah</em>. Koleksi pada waktu ini sangat terhad kepada bahan bercetak asas seperti buku dan manuskrip.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h4>1950-an - 1970-an: Perkembangan Perpustakaan Awam & Akademik</h4>
+        <p>Selepas merdeka, kerajaan mula memfokuskan kepada pembasmian buta huruf dan pendidikan. Akta Perpustakaan Negara 1972 melancarkan penubuhan rasmi Perpustakaan Negara Malaysia.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h4>1980-an - 1990-an: Pengenalan Konsep Pusat Sumber</h4>
+        <p>Dengan kemasukan teknologi kaset, video, dan mikrofilem, konsep <strong>Pusat Sumber</strong> diperkenalkan bagi menggabungkan bahan cetak dan bahan Audio-Visual.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h4>2000-an - Kini: Perpustakaan Menjadi Entiti Bersepadu</h4>
+        <p>Memasuki era digital, fungsi "Pusat Sumber" telah diserap sepenuhnya ke dalam takrifan moden <strong>Perpustakaan</strong>, menyediakan hab repositori maklumat digital yang lengkap.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 3: PNM -->
+  <section id="pnm" class="view">
+    <div class="card">
+      <h2>Perpustakaan Negara Malaysia (PNM)</h2>
+      <p>Perpustakaan Negara Malaysia (PNM) ialah agensi yang bertanggungjawab menyimpan koleksi khazanah ilmu di peringkat kebangsaan untuk generasi masa kini dan masa hadapan. PNM telah ditubuhkan pada tahun 1966.</p>
+      
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/pnm.jpeg" alt="Perpustakaan Negara Malaysia">
+        </div>
+      </div>
+
+      <h3>Sejarah Penubuhan</h3>
+      <p>PNM secara rasminya ditubuhkan pada tahun 1966. Sejak penubuhannya, perpustakaan ini memainkan peranan penting dalam memelihara warisan ilmu negara dan menyediakan akses kepada bahan rujukan kepada orang ramai.</p>
+
+      <h3>Peranan dan Fungsi Utama</h3>
+      <ul class="collection-list">
+        <li>Menyimpan dan memperluaskan penggunaan koleksi terbitan dalam negara serta koleksi mengenai Malaysia.</li>
+        <li>Menjadi pusat rujukan utama untuk bahan-bahan berkaitan Malaysia.</li>
+        <li>Memelihara manuskrip Melayu dan bahan-bahan bersejarah negara.</li>
+      </ul>
+
+      <h3>Perkhidmatan dan Koleksi</h3>
+      <p>Perpustakaan Negara Malaysia menawarkan pelbagai perkhidmatan kepada pengguna:</p>
+      <ul class="collection-list">
+        <li>Perkhidmatan Rujukan Penyelidikan</li>
+        <li>Perkhidmatan Terbitan Bersiri</li>
+        <li>Perkhidmatan Rujukan Koleksi Media Elektronik (disediakan sejak 1993)</li>
+        <li>Perkhidmatan Rujukan Manuskrip Melayu</li>
+      </ul>
+
+      <h3>Keistimewaan</h3>
+      <ul class="collection-list">
+        <li>Sistem katalog OPAC yang membolehkan ahli akademik dan pengguna membuat carian bahan sejarah secara terperinci.</li>
+        <li>Koleksi Terbitan Bersiri dan rujukan jurnal antarabangsa berprestij termasuk <em>Journal of Southeast Asian Studies, The Economist, Foreign Policy,</em> dan <em>Newscientist</em>.</li>
+        <li>Bahan bacaan komprehensif pelbagai bidang seperti falsafah, agama, sains sosial, kesusasteraan, dan kesenian.</li>
+        <li>Kemudahan sudut rujukan antarabangsa seperti Sudut Koleksi ASEAN dan Sudut Pertubuhan Bangsa-Bangsa Bersatu (UN).</li>
+      </ul>
+
+      <div class="image-container image-grid-2">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/sumber_24.jpeg" alt="Katalog OPAC PNM">
+        </div>
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261013-WA0042.jpg" alt="Fasiliti PNM">
+        </div>
+      </div>
+
+      <p>Perpustakaan ini kekal relevan sebagai pusat sumber ilmu utama negara, dengan lebih 8.2 juta pengguna menggunakan perkhidmatan PNM.</p>
+    </div>
+  </section>
+
+  <!-- HALAMAN 4: PKL -->
+  <section id="pkl" class="view">
+    <div class="card">
+      <h2>Perpustakaan Kuala Lumpur (PKL)</h2>
+      <p>Perpustakaan Kuala Lumpur (PKL) Dataran Merdeka ialah perpustakaan utama di Wilayah Persekutuan Kuala Lumpur. PKL juga mempunyai 16 rangkaian cawangan di sekitar Kuala Lumpur.</p>
+
+      <h3>Sejarah Penubuhan</h3>
+      <p>Perpustakaan Kuala Lumpur bermula dengan penubuhan Pustaka Bimbingan Kanak-Kanak pada tahun 1977 di Jalan Tun Razak. Pada tahun 1981, sebuah perpustakaan awam telah ditubuhkan secara rasmi.</p>
+
+      <h3>Lokasi</h3>
+      <p>Perpustakaan utama terletak di 1, Jalan Raja, 50050 Kuala Lumpur. Bangunan ini terletak berhampiran Dataran Merdeka, menjadikannya mudah diakses oleh warga kota.</p>
+      
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261013-WA0000.jpg" alt="Lokasi Perpustakaan Kuala Lumpur">
+        </div>
+      </div>
+
+      <h3>Rangkaian Cawangan</h3>
+      <p>Perpustakaan Kuala Lumpur mempunyai 16 cawangan di sekitar Kuala Lumpur, termasuk:</p>
+      <ul class="collection-list">
+        <li>Pustaka KL @ Taman Tun Dr Ismail</li>
+        <li>Pustaka KL @ Medan Idaman</li>
+        <li>Pustaka KL @ Lembah Pantai</li>
+        <li>Pustaka KL @ Muhibbah</li>
+      </ul>
+      <p>Selain itu, PKL juga mempunyai tiga belas (13) buah Perpustakaan Cawangan dan sebuah Perpustakaan Jabatan yang sedang beroperasi bagi memenuhi keperluan penduduk Kuala Lumpur.</p>
+
+      <h3>Perkhidmatan</h3>
+      <ul class="collection-list">
+        <li>Perkhidmatan pinjaman buku</li>
+        <li>Perkhidmatan rujukan</li>
+        <li>Perkhidmatan internet dan komputer</li>
+        <li>Perkhidmatan Perpustakaan Internet Bergerak bagi mendekatkan wargakota kepada ilmu pengetahuan</li>
+        <li>Ruang baca dan kawasan belajar</li>
+      </ul>
+
+      <h3>Waktu Operasi</h3>
+      <p>Perpustakaan Kuala Lumpur beroperasi dengan waktu berikut:</p>
+      <ul class="collection-list">
+        <li>Isnin: 2:00 petang - 6:30 petang</li>
+        <li>Selasa - Rabu: 10:00 pagi - 6:30 petang</li>
+      </ul>
+      <p><em>Waktu operasi lain mungkin berbeza untuk cawangan-cawangan lain.</em></p>
+
+      <h3>Keistimewaan</h3>
+      <p>Perpustakaan ini memfokuskan kepada kelestarian maklumat perbandaran dan bacaan umum masyarakat kota:</p>
+      <ul class="collection-list">
+        <li>Menempatkan <strong>Kuala Lumpur Resource Centre (KLRC)</strong>, iaitu unit berstatus koleksi tertutup yang menyimpan dan memelihara rekod, bahan penulisan, dan sejarah berkaitan pembangunan Dewan Bandaraya Kuala Lumpur (DBKL).</li>
+        <li>Mempunyai <strong>"Koleksi Kuala Lumpur"</strong> yang menyimpan bahan eksklusif seperti laporan kajian, lukisan terukur, keratan akhbar, laporan tahunan, dan buku sejarah tempatan.</li>
+        <li>Menawarkan bahan bacaan umum merentas pelbagai jenis medium termasuk CD/DVD, fiksyen bahasa Melayu, Inggeris dan bahasa lain, serta bahan rujukan ekonomi dan perniagaan.</li>
+      </ul>
+
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261013-WA0009.jpg" alt="Keistimewaan Koleksi PKL">
+        </div>
+      </div>
+
+      <h3>Peranan dan Kepentingan</h3>
+      <p>Perpustakaan Kuala Lumpur memainkan peranan penting dalam menyediakan akses kepada sumber ilmu untuk warga Kuala Lumpur. Ia berfungsi sebagai pusat pembelajaran, penyelidikan dan aktiviti komuniti, serta menyokong inisiatif pembelajaran sepanjang hayat untuk semua peringkat umur.</p>
+    </div>
+  </section>
+
+  <!-- HALAMAN 5: PPAK -->
+  <section id="ppak" class="view">
+    <div class="card">
+      <h2>Perpustakaan Awam Kedah - Alor Setar</h2>
+      <p>Perpustakaan Awam Kedah di Alor Setar ialah perpustakaan utama di negeri Kedah, yang dikendalikan oleh Perbadanan Perpustakaan Awam Kedah (PPAK).</p>
+      
+      <div class="image-container">
+        <div class="image-wrapper">
+            <!-- Menggunakan gambar mindtrip.ai seperti yang diarahkan -->
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/Screenshot_13-10-2026_22167_mindtrip.ai.jpeg" alt="Perbadanan Perpustakaan Awam Kedah">
+        </div>
+      </div>
+
+      <h3>Sejarah Penubuhan</h3>
+      <p>Perbadanan Perpustakaan Awam Kedah telah ditubuhkan pada Februari 1994 dan didaftarkan secara persekutuan pada Mei 2021. Perpustakaan ini memainkan peranan penting dalam menyediakan perkhidmatan perpustakaan kepada penduduk negeri Kedah.</p>
+
+      <h3>Lokasi</h3>
+      <p>Perpustakaan Awam Alor Setar terletak di Jalan Kolam Air, Bandar Alor Setar, 05200 Alor Setar, Kedah. Perpustakaan ini beroperasi dengan waktu berikut:</p>
+      <ul class="collection-list">
+        <li>Ahad: 9:00 pagi - 6:00 petang</li>
+        <li>Isnin: 9:00 pagi - 6:00 petang</li>
+      </ul>
+      <p><em>Perpustakaan ini ditutup pada Jumaat, Sabtu dan Hari Kelepasan Am.</em></p>
+
+      <h3>Perkhidmatan</h3>
+      <ul class="collection-list">
+        <li>Perkhidmatan pinjaman buku</li>
+        <li>Perkhidmatan rujukan</li>
+        <li>Perkhidmatan Internet dan komputer</li>
+        <li>Ruang baca dan kawasan belajar</li>
+      </ul>
+
+      <h3>Keistimewaan</h3>
+      <p>Perpustakaan ini bertindak sebagai penjaga sejarah dan intelektual negeri melalui pelbagai koleksi warisan dan karya unik:</p>
+      <ul class="collection-list">
+        <li>Mempunyai <strong>"Unit Koleksi Kedah"</strong> yang menyimpan bahan Warisan Khazanah Negeri seperti bahan-bahan nadir, tesis, warta kerajaan, majalah jilid, dan Projek Sejarah Lisan.</li>
+        <li><strong>Koleksi Manuskrip Digital</strong> yang mengandungi karya tulis tangan Jawi dari seawal abad ke-15 hingga abad ke-20, termasuklah naskhah kitab Arab dan al-Quran warisan.</li>
+        <li>Menyimpan <strong>Koleksi Peribadi</strong> anak-anak negeri Kedah yang ternama seperti Koleksi Shahnon Ahmad, Koleksi Ismail Hussein, dan Koleksi Abdullah Hussein.</li>
+        <li>Turut menyediakan <strong>Koleksi Dunia Melayu</strong> yang meliputi bahan rujukan dan kajian mengenai Melayu Acheh, Melayu Riau, Melayu Champa, dan kepulauan Nusantara yang lain.</li>
+      </ul>
+
+      <div class="image-container image-grid-2">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/sumber_14.jpg" alt="Bahan Nadir PPAK">
+        </div>
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20260922-WA0086.jpg" alt="Koleksi Khazanah PPAK">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 6: IPG -->
+  <section id="ipg" class="view">
+    <div class="card">
+      <h2>Perpustakaan Zaba IPG Kampus Tuanku Bainun</h2>
+      <p>Perpustakaan Zaba ialah perpustakaan utama di Institut Pendidikan Guru Kampus Tuanku Bainun, yang terletak di Bukit Mertajam, Pulau Pinang. Perpustakaan ini dinamakan sempena Tan Sri Zainal Abidin bin Ahmad, seorang tokoh sastera dan bahasa Melayu yang terkenal.</p>
+
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20260924-WA0012.jpg" alt="Perpustakaan Zaba IPG Kampus Tuanku Bainun">
+        </div>
+      </div>
+
+      <h3>Sejarah</h3>
+      <p>Perpustakaan Zaba telah lama beroperasi sebagai pusat sumber maklumat utama di IPG Kampus Tuanku Bainun. Perpustakaan ini memainkan peranan penting dalam menyokong aktiviti pengajaran, pembelajaran dan penyelidikan di institut tersebut.</p>
+
+      <h3>Koleksi</h3>
+      <p>Perpustakaan Zaba menyediakan pelbagai jenis koleksi bahan rujukan untuk menyokong keperluan akademik pelajar dan pensyarah. Perpustakaan kampus IPG lain biasanya menawarkan lebih daripada 50,000 bahan rujukan yang merangkumi pelbagai jenis koleksi seperti buku teks, buku rujukan, jurnal, dan sumber digital.</p>
+
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20260924-WA0020.jpg" alt="Koleksi Zaba 1">
+        </div>
+        <!-- IMG-20260924-WA0018.jpg telah disingkirkan mengikut arahan -->
+      </div>
+
+      <h3>Perkhidmatan</h3>
+      <ul class="collection-list">
+        <li>Perkhidmatan pinjaman buku dan bahan rujukan</li>
+        <li>Perkhidmatan rujukan dan penyelidikan</li>
+        <li>Perkhidmatan internet dan akses kepada sumber digital</li>
+        <li>Ruang baca dan kawasan belajar</li>
+        <li>Perkhidmatan maklumat dan literasi maklumat</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HALAMAN 7: KOMUNITI -->
+  <section id="komuniti" class="view">
+    <div class="card">
+      <!-- Tajuk diubah ke Bahagian Komuniti -->
+      <h2>Bahagian Komuniti</h2>
+      
+      <h3>Perpustakaan Pekan Simpang Ampat, Pulau Pinang</h3>
+      <p>Perpustakaan Pekan Simpang Ampat ialah salah satu perpustakaan awam yang terletak di kawasan Simpang Ampat, Pulau Pinang. Perpustakaan ini merupakan sebahagian daripada rangkaian perpustakaan awam yang dikendalikan oleh Perbadanan Perpustakaan Awam Negeri Pulau Pinang.</p>
+
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261002-WA0008.jpg" alt="Perpustakaan Pekan Simpang Ampat">
+        </div>
+      </div>
+
+      <h4>Lokasi</h4>
+      <p>Perpustakaan Pekan Simpang Ampat terletak di kawasan Simpang Ampat, yang merupakan sebuah pekan di daerah Seberang Perai Selatan, Pulau Pinang. Pekan ini berfungsi sebagai pusat komersial dan pentadbiran untuk kawasan sekitarnya.</p>
+
+      <h4>Perkhidmatan</h4>
+      <p>Perpustakaan ini menawarkan pelbagai perkhidmatan kepada penduduk tempatan, termasuk:</p>
+      <ul class="collection-list">
+        <li>Perkhidmatan pinjaman buku dan bahan rujukan</li>
+        <li>Perkhidmatan rujukan dan penyelidikan</li>
+        <li>Perkhidmatan internet dan akses kepada sumber digital</li>
+        <li>Ruang baca dan kawasan belajar</li>
+        <li>Aktiviti pemupukan budaya membaca</li>
+      </ul>
+
+      <div class="image-container image-grid-2">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261002-WA0009.jpg" alt="Aktiviti Simpang Ampat">
+        </div>
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261002-WA0007.jpg" alt="Fasiliti Simpang Ampat">
+        </div>
+      </div>
+
+      <hr style="margin: 40px 0; border: 1px solid var(--line);">
+
+      <h3>Perpustakaan Desa Batu Kawan</h3>
+      <p>Perpustakaan Desa Batu Kawan ialah sebuah perpustakaan desa yang terletak di Kampung Masjid Pengkalan Batu Kawan, Pulau Pinang. Perpustakaan ini merupakan sebahagian daripada rangkaian perpustakaan desa yang dikendalikan oleh Perbadanan Perpustakaan Awam Negeri Pulau Pinang untuk menyediakan perkhidmatan perpustakaan kepada komuniti luar bandar.</p>
+
+      <div class="image-container">
+        <div class="image-wrapper">
+            <!-- Menggunakan gambar facebook.com seperti yang diarahkan -->
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/Screenshot_13-10-2026_221434_www.facebook.com.jpeg" alt="Perpustakaan Desa Batu Kawan Luaran">
+        </div>
+      </div>
+
+      <h4>Lokasi</h4>
+      <p>Perpustakaan Desa Batu Kawan terletak di kawasan Batu Kawan, yang merupakan sebuah kawasan di daerah Seberang Perai Tengah, Pulau Pinang. Kawasan ini sedang pesat membangun sebagai kawasan perindustrian dan perumahan.</p>
+
+      <h4>Perkhidmatan</h4>
+      <ul class="collection-list">
+        <li>Perkhidmatan pinjaman buku dan bahan rujukan</li>
+        <li>Perkhidmatan rujukan dan penyelidikan</li>
+        <li>Perkhidmatan internet dan akses kepada sumber digital</li>
+        <li>Ruang baca dan kawasan belajar</li>
+        <li>Aktiviti pemupukan budaya membaca</li>
+      </ul>
+
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261002-WA0073.jpg" alt="Dalaman Batu Kawan">
+        </div>
+      </div>
+
+      <h4>Waktu Operasi</h4>
+      <div class="image-container">
+        <div class="image-wrapper">
+            <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261002-WA0084.jpg" alt="Waktu Operasi Batu Kawan">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HALAMAN 8: ANALISIS -->
+  <section id="analisis" class="view">
+    <div class="card">
+      <h2>Analisis Komparatif: Kesan kepada Pengajaran Global</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 25px;">Berdasarkan rumusan analisis, bagaimanakah setiap institusi maklumat ini saling melengkapi bagi memberi impak kepada pengajaran guru Sejarah?</p>
+      
+      <!-- Gambar diambil balik dari bahagian-bahagian sebelum ini seperti yang diarahkan -->
+      <div class="analisis-item">
+        <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/pnm.jpeg" alt="PNM Thumb" class="analisis-thumb">
+        <div class="analisis-content">
+            <h4>Perpustakaan Negara Malaysia (PNM)</h4>
+            <ul>
+                <li><strong>Fokus:</strong> Jurnal global, koleksi antarabangsa (ASEAN/UN).</li>
+                <li><strong>Impak:</strong> Membolehkan guru mengesahkan fakta menggunakan sumber sekunder bertaraf antarabangsa.</li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="analisis-item">
+        <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261013-WA0000.jpg" alt="PKL Thumb" class="analisis-thumb">
+        <div class="analisis-content">
+            <h4>Perpustakaan Kuala Lumpur</h4>
+            <ul>
+                <li><strong>Fokus:</strong> Dokumen pentadbiran dan kemajuan ibu kota.</li>
+                <li><strong>Impak:</strong> Menyokong kajian perbandaran spesifik dengan bukti pelan dan rekod arkib tempatan.</li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="analisis-item">
+        <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/Screenshot_13-10-2026_22167_mindtrip.ai.jpeg" alt="PPAK Thumb" class="analisis-thumb">
+        <div class="analisis-content">
+            <h4>Perbadanan Perpustakaan Awam Kedah (PPAK)</h4>
+            <ul>
+                <li><strong>Fokus:</strong> Sejarah lisan, Manuskrip digital, Tokoh Negeri.</li>
+                <li><strong>Impak:</strong> Membekalkan naratif sejarah dan warisan negeri yang sahih ke dalam kelas.</li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="analisis-item">
+        <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20260924-WA0012.jpg" alt="IPG Thumb" class="analisis-thumb">
+        <div class="analisis-content">
+            <h4>Perpustakaan Zaba IPG Kampus Tuanku Bainun</h4>
+            <ul>
+                <li><strong>Fokus:</strong> Ilmu pedagogi dan panduan kurikulum pendidik.</li>
+                <li><strong>Impak:</strong> Membentuk metodologi, rujukan, dan jati diri bakal guru Sejarah.</li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="analisis-item">
+        <img src="https://enochoh-gurumsia.github.io/gambarpusatsumber/IMG-20261002-WA0008.jpg" alt="Komuniti Thumb" class="analisis-thumb">
+        <div class="analisis-content">
+            <h4>Perpustakaan Komuniti (Desa & Pekan)</h4>
+            <ul>
+                <li><strong>Fokus:</strong> Bahan bacaan awam dan rujukan komuniti asas luar bandar.</li>
+                <li><strong>Impak:</strong> Menyediakan prasarana literasi yang merapatkan jurang maklumat di peringkat masyarakat akar umbi.</li>
+            </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HALAMAN 9: RUJUKAN -->
+  <section id="rujukan" class="view">
+    <div class="card">
+      <h2>Rujukan & Latar Belakang</h2>
+      
+      <h3>Sumber Imej</h3>
+      <ul class="collection-list">
+        <li><strong>Sumber Gambar Utama:</strong> <a href="https://enochoh-gurumsia.github.io/gambarpusatsumber/" target="_blank">https://enochoh-gurumsia.github.io/gambarpusatsumber/</a></li>
+        <li><strong>Sumber Gambar Internet:</strong> 
+            <ul>
+                <li>Tangkapan skrin Perpustakaan Awam Kedah (mindtrip.ai)</li>
+                <li>Tangkapan skrin Perpustakaan Desa Batu Kawan (Facebook)</li>
+            </ul>
+        </li>
+      </ul>
+
+      <h3>Latar Belakang Pembangunan</h3>
+      <p>Laman ini dibangunkan sebagai pelengkap memenuhi sebahagian daripada Tugasan Pentaksiran Berterusan bagi kursus SJHK3243 Sumber Pengajaran dan Pembelajaran Mata Pelajaran Sejarah.</p>
+      <p>Laman ini menyampaikan bahawa institusi maklumat di Malaysia iaitu pusat sumber yang telah berkembang menjadi perpustakaan, merupakan ekosistem komprehensif yang menyokong pengajaran sejarah di semua peringkat. Institusi ini memainkan peranan penting dalam menyimpankan pelbagai sumber primer dan sekunder secara setempat, serantau dan global yang dapat menyokong pembelajaran bermakna bagi mata pelajaran Sejarah.</p>
+
+      <h3>Hak Cipta</h3>
+      <p>Semua hak cipta terpelihara. Tiada mana-mana bahagian daripada laman ini boleh diterbitkan semula atau disimpan dalam bentuk yang boleh diperoleh semula atau disiarkan dalam sebarang bentuk dengan apa cara, elektronik, mekanikal, fotokopi, rakaman atau sebagainya tanpa mendapat izin daripada Enoch Oh Chong Yang, Jenny Ng Ker Xin dan Swe Yin Xuan siswa Guru Sejarah Program Ijazah Sarjana Muda Perguruan dengan Kepujian Ambilan Tahun 2024/2029, Institut Pendidikan Guru Malaysia Kampus Sultan Abdul Halim, selaku pembangun laman web ini.</p>
+
+      <h3>Penghargaan</h3>
+      <p>Saya ingin merakamkan setinggi-tinggi penghargaan dan ribuan terima kasih kepada Dr. Haslindawati binti Saari, Pensyarah Kanan, Jabatan Digital dan Teknologi Maklumat, Institut Pendidikan Guru Malaysia Kampus Sultan Abdul Halim, selaku pensyarah kursus ini, atas cadangan konstruktif dan bimbingan ilmiah sehinggalah pembangunan laman ini dapat dijayakan.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>&copy; 2026 Projek Tugasan 2: Institusi Maklumat Sumber Pengajaran dan Pembelajaran Sejarah.</p>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const nav = document.getElementById("site-nav");
+  const toggle = document.querySelector(".nav-toggle");
+  const buttons = [...document.querySelectorAll("nav [data-view]")];
+  const views = [...document.querySelectorAll(".view")];
+
+  function go(id, options = {}) {
+    const target = document.getElementById(id);
+    if (!target || !target.classList.contains("view")) return;
+    views.forEach(view => {
+      const active = view.id === id;
+      view.classList.toggle("active", active);
+      view.hidden = !active;
+    });
+    buttons.forEach(button => {
+      if (button.dataset.view === id) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+      button.classList.toggle("active", button.dataset.view === id);
+    });
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    if (options.scroll !== false) {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+    }
+    if (options.focus) {
+      const heading = target.querySelector("h1, h2");
+      if (heading) {
+        heading.setAttribute("tabindex", "-1");
+        heading.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  buttons.forEach(button => button.addEventListener("click", () => {
+    go(button.dataset.view, { focus: true });
+    if (history.replaceState) history.replaceState(null, "", "#" + button.dataset.view);
+  }));
+  document.querySelectorAll('[onclick^="go("]').forEach(button => {
+    const match = button.getAttribute("onclick").match(/go\(['"]([^'"]+)['"]\)/);
+    if (match) {
+      button.removeAttribute("onclick");
+      button.addEventListener("click", () => go(match[1], { focus: true }));
+    }
+  });
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
+    }
+  });
+  function syncHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id && document.getElementById(id)?.classList.contains("view")) go(id, { scroll: false });
+  }
+  window.addEventListener("hashchange", syncHash);
+  syncHash();
+})();
+</script>
+
+</body>
+</html>
