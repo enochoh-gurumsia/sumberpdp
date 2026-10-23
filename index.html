@@ -28,20 +28,37 @@ button:focus-visible, a:focus-visible { outline: 3px solid #f6c453; outline-offs
 .skip-link { position:absolute; left:12px; top:-60px; z-index:1000; padding:10px 14px; background:white; color:#1a365d; border-radius:8px; }
 .skip-link:focus { top:12px; }
 
-body { 
-    margin: 0; 
-    
-    /* 现代博物馆风格：柔和光晕与渐变质感 */
-    background: 
-        radial-gradient(circle at 10% 20%, rgba(214, 158, 46, 0.15) 0%, transparent 40%), 
-        radial-gradient(circle at 90% 80%, rgba(26, 54, 93, 0.1) 0%, transparent 45%),
-        linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+body {
+    margin: 0;
+    /* Bolder academic backdrop: deep blue atmosphere, luminous blue fields and gold details */
+    background-color: #eaf0f8;
+    background-image:
+      radial-gradient(ellipse at 8% 5%, rgba(214, 158, 46, 0.24) 0, transparent 28%),
+      radial-gradient(ellipse at 96% 18%, rgba(43, 108, 176, 0.22) 0, transparent 30%),
+      radial-gradient(ellipse at 52% 100%, rgba(26, 54, 93, 0.11) 0, transparent 45%),
+      linear-gradient(135deg, #f7f9fc 0%, #e5edf7 48%, #f2f5fa 100%),
+      repeating-linear-gradient(0deg, transparent 0, transparent 43px, rgba(26,54,93,0.045) 44px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 43px, rgba(26,54,93,0.045) 44px);
     background-attachment: fixed;
-    
-    color: var(--ink); 
+    color: var(--ink);
     font-family: 'Poppins', system-ui, -apple-system, sans-serif;
     font-size: 16px;
     line-height: 1.7;
+}
+
+/* A slim academic accent above the content, without competing with photographs */
+main {
+    position: relative;
+}
+main::before {
+    content: "";
+    display: block;
+    height: 7px;
+    width: 100%;
+    margin: 0 auto 28px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #102747 0%, #2b6cb0 42%, #d69e2e 74%, #f1d28a 100%);
+    box-shadow: 0 5px 16px rgba(26, 54, 93, 0.18);
 }
 
 header {
@@ -89,13 +106,18 @@ h3 { color: var(--blue); margin-top: 30px; font-weight: 700; font-size: 1.4rem; 
 h4 { color: var(--navy); margin-bottom: 8px; font-weight: 600; font-size: 1.1rem; }
 
 .card {
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.965);
+    border: 1px solid rgba(178, 194, 214, 0.9);
+    border-top: 4px solid rgba(43, 108, 176, 0.72);
+    border-radius: 18px;
     padding: 35px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 36px rgba(26, 54, 93, 0.105);
     margin-bottom: 25px;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    backdrop-filter: blur(4px);
+}
+.card:hover {
+    box-shadow: 0 16px 36px rgba(26, 54, 93, 0.09);
 }
 
 .timeline-item {
